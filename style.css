@@ -1,31 +1,55 @@
-/* تخصيص شريط التمرير */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #e11d48;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #e11d48; }
 
 /* إخفاء النصوص في البداية لحركات GSAP */
-.hero-subtitle,
-.hero-title,
-.hero-btn,
-.fade-up {
-  opacity: 0;
-  visibility: hidden;
+.hero-subtitle, .hero-title, .hero-btn { opacity: 0; visibility: hidden; }
+
+/* حركة النص المتحرك (Marquee) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-content {
+  animation: marquee 20s linear infinite;
 }
 
-/* تأثير على صورة الخلفية */
-.hero-bg img {
-  transition: transform 10s ease-out, filter 1s ease;
+/* المؤشر المخصص (Custom Cursor) */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #e11d48;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
 }
-.hero-section:hover .hero-bg img {
-  transform: scale(1);
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(225, 29, 72, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+/* تكبير المؤشر عند الوقوف على المنتجات */
+.product-card:hover ~ .cursor-outline {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(225, 29, 72, 0.1);
+}
+
+/* ستارة كشف الصور (Image Reveal) */
+.image-reveal {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
