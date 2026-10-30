@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VELOUR | Premium Clothing</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -17,22 +16,20 @@
           },
           colors: {
             bgDark: '#0a0a0a',
-            accent: '#e11d48', // لون أحمر فاخر
+            accent: '#e11d48',
           }
         }
       }
     }
   </script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-bgDark text-white font-sans overflow-x-hidden antialiased selection:bg-accent selection:text-white">
+<body class="bg-bgDark text-white font-sans overflow-x-hidden antialiased selection:bg-accent selection:text-white cursor-none">
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
 
   <!-- Navbar -->
   <nav class="fixed w-full top-0 z-50 px-6 py-6 mix-blend-difference">
@@ -44,7 +41,6 @@
         <a href="#" class="hover:text-gray-400 transition">About</a>
       </div>
       <div class="flex space-x-6 items-center text-sm tracking-widest uppercase">
-        <a href="#" class="hidden md:block hover:text-gray-400 transition">Search</a>
         <a href="#" class="hover:text-gray-400 transition">Cart (0)</a>
       </div>
     </div>
@@ -52,13 +48,11 @@
 
   <!-- Hero Section -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden hero-section">
-    <!-- Background Image -->
     <div class="absolute inset-0 z-0 hero-bg">
-      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" alt="Fashion Model" class="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition duration-1000 scale-105" />
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" alt="Fashion Model" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition duration-1000 scale-110" />
       <div class="absolute inset-0 bg-gradient-to-t from-bgDark via-transparent to-bgDark"></div>
     </div>
 
-    <!-- Hero Text -->
     <div class="relative z-10 text-center px-4 hero-content">
       <p class="text-sm tracking-[0.3em] uppercase text-gray-300 mb-4 hero-subtitle">Autumn / Winter 2026</p>
       <h1 class="text-6xl md:text-9xl font-serif font-bold leading-[0.9] tracking-tighter mb-8 hero-title">
@@ -71,62 +65,75 @@
     </div>
   </section>
 
+  <!-- Marquee (شريط نص متحرك) -->
+  <div class="marquee-container py-6 border-y border-white/10 overflow-hidden relative z-10 bg-bgDark">
+    <div class="marquee-content flex whitespace-nowrap text-4xl md:text-6xl font-serif italic text-white/20">
+      <span>NEW ARRIVALS — WINTER 2026 — PREMIUM QUALITY — </span>
+      <span>NEW ARRIVALS — WINTER 2026 — PREMIUM QUALITY — </span>
+    </div>
+  </div>
+
   <!-- Collection Grid -->
-  <section id="collection" class="py-24 px-6 relative z-10">
+  <section id="collection" class="py-32 px-6 relative z-10">
     <div class="max-w-7xl mx-auto">
-      <div class="flex justify-between items-end mb-16 fade-up">
-        <h2 class="text-4xl font-serif">New Arrivals</h2>
-        <a href="#" class="text-sm tracking-widest uppercase border-b border-white pb-1 hover:text-gray-400 transition">View All</a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Staggered Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
         
-        <!-- Product 1 -->
-        <div class="group cursor-pointer product-card fade-up">
-          <div class="relative overflow-hidden bg-gray-900 aspect-[3/4] mb-4">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1000&auto=format&fit=crop" alt="Leather Jacket" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            <div class="absolute bottom-4 left-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
-              <button class="w-full bg-white text-black py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-200">Quick Add</button>
-            </div>
+        <!-- Product 1 (Left) -->
+        <div class="product-card group cursor-pointer relative md:mt-0">
+          <div class="overflow-hidden bg-gray-900 aspect-[3/4] relative image-reveal">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1000&auto=format&fit=crop" alt="Leather Jacket" class="w-full h-[120%] object-cover parallax-img absolute top-[-10%]" />
           </div>
-          <h3 class="text-lg font-medium">Oversized Leather Jacket</h3>
-          <p class="text-gray-400">$450.00</p>
+          <div class="mt-6 flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-serif">Oversized Leather Jacket</h3>
+              <p class="text-gray-400 mt-1">Premium Italian Leather</p>
+            </div>
+            <p class="text-lg font-medium">$450</p>
+          </div>
         </div>
 
-        <!-- Product 2 -->
-        <div class="group cursor-pointer product-card fade-up">
-          <div class="relative overflow-hidden bg-gray-900 aspect-[3/4] mb-4">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="T-Shirt" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            <div class="absolute bottom-4 left-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
-              <button class="w-full bg-white text-black py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-200">Quick Add</button>
-            </div>
+        <!-- Product 2 (Right, pushed down) -->
+        <div class="product-card group cursor-pointer relative md:mt-32">
+          <div class="overflow-hidden bg-gray-900 aspect-[3/4] relative image-reveal">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="T-Shirt" class="w-full h-[120%] object-cover parallax-img absolute top-[-10%]" />
           </div>
-          <h3 class="text-lg font-medium">Heavyweight Cotton Tee</h3>
-          <p class="text-gray-400">$85.00</p>
+          <div class="mt-6 flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-serif">Heavyweight Cotton Tee</h3>
+              <p class="text-gray-400 mt-1">100% Organic Cotton</p>
+            </div>
+            <p class="text-lg font-medium">$85</p>
+          </div>
         </div>
 
-        <!-- Product 3 -->
-        <div class="group cursor-pointer product-card fade-up">
-          <div class="relative overflow-hidden bg-gray-900 aspect-[3/4] mb-4">
-            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=1000&auto=format&fit=crop" alt="Pants" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            <div class="absolute bottom-4 left-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
-              <button class="w-full bg-white text-black py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-200">Quick Add</button>
-            </div>
+        <!-- Product 3 (Left) -->
+        <div class="product-card group cursor-pointer relative md:mt-0">
+          <div class="overflow-hidden bg-gray-900 aspect-[3/4] relative image-reveal">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=1000&auto=format&fit=crop" alt="Pants" class="w-full h-[120%] object-cover parallax-img absolute top-[-10%]" />
           </div>
-          <h3 class="text-lg font-medium">Tailored Wide-Leg Trousers</h3>
-          <p class="text-gray-400">$180.00</p>
+          <div class="mt-6 flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-serif">Tailored Trousers</h3>
+              <p class="text-gray-400 mt-1">Wide-Leg Fit</p>
+            </div>
+            <p class="text-lg font-medium">$180</p>
+          </div>
         </div>
 
-        <!-- Product 4 -->
-        <div class="group cursor-pointer product-card fade-up">
-          <div class="relative overflow-hidden bg-gray-900 aspect-[3/4] mb-4">
-            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" alt="Coat" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-            <div class="absolute bottom-4 left-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
-              <button class="w-full bg-white text-black py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-200">Quick Add</button>
-            </div>
+        <!-- Product 4 (Right, pushed down) -->
+        <div class="product-card group cursor-pointer relative md:mt-32">
+          <div class="overflow-hidden bg-gray-900 aspect-[3/4] relative image-reveal">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" alt="Coat" class="w-full h-[120%] object-cover parallax-img absolute top-[-10%]" />
           </div>
-          <h3 class="text-lg font-medium">Wool Trench Coat</h3>
-          <p class="text-gray-400">$320.00</p>
+          <div class="mt-6 flex justify-between items-start">
+            <div>
+              <h3 class="text-2xl font-serif">Wool Trench Coat</h3>
+              <p class="text-gray-400 mt-1">Double Breasted</p>
+            </div>
+            <p class="text-lg font-medium">$320</p>
+          </div>
         </div>
 
       </div>
@@ -145,11 +152,8 @@
     </div>
   </footer>
 
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <!-- Custom Script -->
   <script src="script.js"></script>
 </body>
 </html>
